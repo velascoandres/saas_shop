@@ -1,0 +1,4 @@
+{
+	"linter": { "rules": { "recommended": false } },
+	"extends": ["../../biome.json"]
+}
