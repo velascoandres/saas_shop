@@ -10,23 +10,12 @@ import { AuthModule } from './features/auth/auth.module';
 @Module({
 	imports: [
 		ConfigModule.forRoot(),
-		MikroOrmModule.forRootAsync({
-			imports: [ConfigModule],
-			inject: [ConfigService],
-			useFactory(configService: ConfigService) {
-				return {
-					entities: ['./dist/**/*.entity.js'],
-					entitiesTs: ['./src/**/*.entity.ts'],
-					clientUrl: configService.get('POSTGRES_URL'),
-					driver: PostgreSqlDriver,
-					debug: true,
-				};
-			},
-		}),
-    UsersModule,
-    AuthModule
+		MikroOrmModule.forRoot(),
+		UsersModule,
+		AuthModule,
 	],
-	controllers: [AppController],
 	providers: [AppService],
+	controllers: [],
+	exports: [],
 })
 export class AppModule {}

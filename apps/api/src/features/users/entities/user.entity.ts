@@ -10,7 +10,6 @@ export class User extends BaseUUIEntity {
 	lastName!: string;
 
 	@Property()
-    @Unique()
 	email: string;
 
 	@Property()

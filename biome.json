@@ -6,18 +6,29 @@
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single"
-		},
-		"parser": {
-			"unsafeParameterDecoratorsEnabled": true
 		}
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true,
-			"style": {
-				"useImportType": "off"
+			"recommended": true
+		}
+	},
+	"overrides": [
+		{
+			"include": ["apps/api/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useImportType": "off"
+					}
+				}
+			},
+			"javascript": {
+				"parser": {
+					"unsafeParameterDecoratorsEnabled": true
+				}
 			}
 		}
-	}
+	]
 }

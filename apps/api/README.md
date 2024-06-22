@@ -58,6 +58,16 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
+# Migrations
+
+```text
+npx mikro-orm migration:create   # Create new migration with current schema diff
+npx mikro-orm migration:up       # Migrate up to the latest version
+npx mikro-orm migration:down     # Migrate one step down
+npx mikro-orm migration:list     # List all executed migrations
+npx mikro-orm migration:pending  # List all pending migrations
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).

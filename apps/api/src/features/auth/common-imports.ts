@@ -1,6 +1,10 @@
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 
-import { UsersModule } from '../users/users.module';
+import { ConfigModule } from '@nestjs/config';
 
-export default [UsersModule, JwtModule.register({}), PassportModule];
+export default [
+	JwtModule.register({}),
+	PassportModule,
+	ConfigModule,
+];

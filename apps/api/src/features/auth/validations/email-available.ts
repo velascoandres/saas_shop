@@ -1,3 +1,4 @@
+import { UsersService } from '@/users/services/users.service';
 import {
   registerDecorator,
   ValidationOptions,
@@ -13,11 +14,11 @@ export class EmailAvailableConstraint implements ValidatorConstraintInterface {
   async validate(email: string): Promise<boolean> {
     const user = await this.userService.findUserByEmail(email);
 
-    return !Boolean(user);
+    return !user;
   }
 }
 export function EmailAvailable(validationOptions?: ValidationOptions) {
-  return function (object: object, propertyName: string) {
+  return (object: object, propertyName: string) => {
     registerDecorator({
       target: object.constructor,
       propertyName: propertyName,
