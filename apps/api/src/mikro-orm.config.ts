@@ -1,16 +1,16 @@
 import 'dotenv/config'
 
-import { defineConfig } from '@mikro-orm/postgresql';
-import { Logger } from '@nestjs/common';
-import { SqlHighlighter } from '@mikro-orm/sql-highlighter';
-import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
-import { Migrator } from '@mikro-orm/migrations';
+import { Migrator } from '@mikro-orm/migrations'
+import { defineConfig } from '@mikro-orm/postgresql'
+import { TsMorphMetadataProvider } from '@mikro-orm/reflection'
+import { SqlHighlighter } from '@mikro-orm/sql-highlighter'
+import { Logger } from '@nestjs/common'
 
-const logger = new Logger('MikroORM');
+const logger = new Logger('MikroORM')
 
 const config = defineConfig({
   logger: logger.log.bind(logger),
-	clientUrl: process.env.POSTGRES_URL,
+  clientUrl: process.env.POSTGRES_URL,
   entities: ['dist/**/*.entity.js'],
   entitiesTs: ['src/**/*.entity.ts'],
   highlighter: new SqlHighlighter(),
@@ -18,7 +18,4 @@ const config = defineConfig({
   extensions: [Migrator],
 })
 
-
-console.log(process.env.POSTGRES_URL)
-
-export default config;
+export default config

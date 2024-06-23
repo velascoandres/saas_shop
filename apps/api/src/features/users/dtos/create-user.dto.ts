@@ -1,20 +1,20 @@
-import { IsAlpha, IsEmail, IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import { IsAlpha, IsEmail, IsNotEmpty, IsString, IsUrl } from 'class-validator'
 
-import { EmailAvailable } from '@/auth/validations/email-available';
+import { EmailAvailable } from '@/auth/validations/email-available'
 
 export class CreateUserDTO {
   @IsEmail()
   @EmailAvailable({
     message: 'email was taken by another user',
   })
-  email: string;
+  email: string
 
   @IsNotEmpty()
   @IsString()
   @IsAlpha()
-  fullName: string;
+  fullName: string
 
   @IsNotEmpty()
   @IsUrl()
-  picture: string;
+  picture: string
 }

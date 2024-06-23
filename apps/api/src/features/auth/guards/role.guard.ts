@@ -1,9 +1,9 @@
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'
 
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common'
+import { Reflector } from '@nestjs/core'
 
-import { AuthRequest } from '../types/auth-request';
+import { AuthRequest } from '../types/auth-request'
 
 @Injectable()
 export class RoleGuard implements CanActivate {
@@ -11,13 +11,13 @@ export class RoleGuard implements CanActivate {
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
-    const roles = this.reflector.get<string[]>('roles', context.getHandler());
-    const user = context.switchToHttp().getRequest<AuthRequest>().user;
+    const roles = this.reflector.get<string[]>('roles', context.getHandler())
+    const user = context.switchToHttp().getRequest<AuthRequest>().user
 
-    return this.mathRoles(user.roles, roles);
+    return this.mathRoles(user.roles, roles)
   }
 
   private mathRoles(userRoles: string[], roles: string[]): boolean {
-    return roles.some((role) => userRoles.includes(role));
+    return roles.some((role) => userRoles.includes(role))
   }
 }

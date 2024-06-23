@@ -1,20 +1,19 @@
-import { UsersService } from '@/users/services/users.service';
+import { UsersService } from '@/users/services/users.service'
 import {
-  registerDecorator,
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
-} from 'class-validator';
-
+  registerDecorator,
+} from 'class-validator'
 
 @ValidatorConstraint({ async: true })
 export class EmailAvailableConstraint implements ValidatorConstraintInterface {
   constructor(private readonly userService: UsersService) {}
 
   async validate(email: string): Promise<boolean> {
-    const user = await this.userService.findUserByEmail(email);
+    const user = await this.userService.findUserByEmail(email)
 
-    return !user;
+    return !user
   }
 }
 export function EmailAvailable(validationOptions?: ValidationOptions) {
@@ -25,6 +24,6 @@ export function EmailAvailable(validationOptions?: ValidationOptions) {
       options: validationOptions,
       constraints: [],
       validator: EmailAvailableConstraint,
-    });
-  };
+    })
+  }
 }

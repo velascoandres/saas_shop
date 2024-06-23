@@ -1,7 +1,5 @@
 {
-  "namespaces": [
-    "public"
-  ],
+  "namespaces": ["public"],
   "name": "public",
   "tables": [
     {
@@ -49,9 +47,7 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": [
-            "name"
-          ],
+          "columnNames": ["name"],
           "composite": false,
           "keyName": "role_name_unique",
           "constraint": true,
@@ -60,9 +56,7 @@
         },
         {
           "keyName": "role_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -145,9 +139,7 @@
       "schema": "public",
       "indexes": [
         {
-          "columnNames": [
-            "is_active"
-          ],
+          "columnNames": ["is_active"],
           "composite": false,
           "keyName": "user_is_active_index",
           "constraint": false,
@@ -156,9 +148,7 @@
         },
         {
           "keyName": "user_email_unique",
-          "columnNames": [
-            "email"
-          ],
+          "columnNames": ["email"],
           "composite": false,
           "constraint": true,
           "primary": false,
@@ -166,9 +156,7 @@
         },
         {
           "keyName": "user_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -234,10 +222,7 @@
       "indexes": [
         {
           "keyName": "user_role_user_id_role_id_unique",
-          "columnNames": [
-            "user_id",
-            "role_id"
-          ],
+          "columnNames": ["user_id", "role_id"],
           "composite": true,
           "constraint": true,
           "primary": false,
@@ -245,9 +230,7 @@
         },
         {
           "keyName": "user_role_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "constraint": true,
           "primary": true,
@@ -258,25 +241,17 @@
       "foreignKeys": {
         "user_role_user_id_foreign": {
           "constraintName": "user_role_user_id_foreign",
-          "columnNames": [
-            "user_id"
-          ],
+          "columnNames": ["user_id"],
           "localTableName": "public.user_role",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.user",
           "updateRule": "cascade"
         },
         "user_role_role_id_foreign": {
           "constraintName": "user_role_role_id_foreign",
-          "columnNames": [
-            "role_id"
-          ],
+          "columnNames": ["role_id"],
           "localTableName": "public.user_role",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.role",
           "updateRule": "cascade"
         }

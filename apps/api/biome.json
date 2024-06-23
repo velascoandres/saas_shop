@@ -28,14 +28,14 @@
         "useImportType": "off"
       },
       "suspicious": {
-        "noEmptyBlockStatements": "warn",
+        "noEmptyBlockStatements": "off",
         "noExplicitAny": "off",
         "noExtraNonNullAssertion": "error",
         "noMisleadingInstantiator": "error",
         "useNamespaceKeyword": "error"
       }
     },
-    "ignore": [".eslintrc.js"]
+    "ignore": [".eslintrc.js", "dist/**/*"]
   },
   "javascript": {
     "formatter": {
