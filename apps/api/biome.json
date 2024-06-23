@@ -34,8 +34,7 @@
         "noMisleadingInstantiator": "error",
         "useNamespaceKeyword": "error"
       }
-    },
-    "ignore": [".eslintrc.js", "dist/**/*"]
+    }
   },
   "javascript": {
     "formatter": {
@@ -51,6 +50,9 @@
     "parser": {
       "unsafeParameterDecoratorsEnabled": true
     }
+  },
+  "files": {
+    "ignore": ["dist/**"]
   },
   "extends": ["../../biome.json"]
 }
