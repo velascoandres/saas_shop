@@ -1,11 +1,11 @@
-import { passportJwtSecret } from 'jwks-rsa'
-import { ExtractJwt, Strategy } from 'passport-jwt'
+import { passportJwtSecret } from 'jwks-rsa';
+import { ExtractJwt, Strategy } from 'passport-jwt';
 
-import { Injectable } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
-import { PassportStrategy } from '@nestjs/passport'
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { PassportStrategy } from '@nestjs/passport';
 
-import { AuthService } from '../auth.service'
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -26,10 +26,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       issuer: `${configService.get('CLERK_ISSUER_URL')}`,
       algorithms: ['RS256'],
-    })
+    });
   }
 
   async validate(payload: { sub: string }) {
-    return this.authService.createOrUpdateUser(payload.sub)
+    return this.authService.createOrUpdateUser(payload.sub);
   }
 }

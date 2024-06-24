@@ -3,4 +3,4 @@ export const PERMISSIONS = {
   UPDATE_SHOP: 'UPDATE_SHOP',
   DELETE_SHOP: 'DELETE_SHOP',
   FIND_SHOP_INFO: 'FIND_SHOP_INFO',
-} as const
+} as const;

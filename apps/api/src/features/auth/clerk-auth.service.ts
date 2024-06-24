@@ -1,25 +1,25 @@
-import { type ClerkClient, createClerkClient } from '@clerk/clerk-sdk-node'
-import { Injectable } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
+import { type ClerkClient, createClerkClient } from '@clerk/clerk-sdk-node';
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 
 interface UserInfo {
-  email: string
-  pictureUrl: string
-  fullName: string
+  email: string;
+  pictureUrl: string;
+  fullName: string;
 }
 
 @Injectable()
 export class ClerkAuthService {
-  private clerkClient: ClerkClient
+  private clerkClient: ClerkClient;
 
   constructor(configService: ConfigService) {
     this.clerkClient = createClerkClient({
       secretKey: configService.get('CLERK_SECRET_KEY'),
-    })
+    });
   }
 
   async getUserInfo(sub: string): Promise<{ user: UserInfo }> {
-    const user = await this.clerkClient.users.getUser(sub)
+    const user = await this.clerkClient.users.getUser(sub);
 
     return {
       user: {
@@ -27,6 +27,6 @@ export class ClerkAuthService {
         email: user.emailAddresses[0].emailAddress,
         pictureUrl: user.imageUrl,
       },
-    }
+    };
   }
 }

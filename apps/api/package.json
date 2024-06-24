@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@repo/shared-const-types": "workspace:*",
+    "@repo/validation-schemas": "workspace:*",
     "@clerk/clerk-sdk-node": "^5.0.12",
     "@mikro-orm/cli": "^6.2.9",
     "@mikro-orm/core": "^6.2.9",
