@@ -1,5 +1,6 @@
+import { Business } from '@/features/business/entities/business'
 import { BaseUUIEntity } from '@/utils/base-entity'
-import { Entity, Index, Property, Unique } from '@mikro-orm/core'
+import { Entity, Index, OneToOne, Property, Unique } from '@mikro-orm/core'
 
 @Entity()
 @Unique({ properties: ['email'] })
@@ -15,6 +16,9 @@ export class User extends BaseUUIEntity {
   @Property()
   @Index()
   isActive = true
+
+  @OneToOne({ nullable: true })
+  business?: Business
 
   @Property({ name: 'fullName' })
   getFullName() {
