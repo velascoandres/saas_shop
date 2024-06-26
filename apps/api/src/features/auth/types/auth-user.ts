@@ -1,7 +1,6 @@
-export interface AuthUser {
-  id: number;
-  fullName: string;
-  email: string;
-  isActive: boolean;
+import { type User } from '@/users/entities/user.entity';
+
+export interface AuthUser extends User {
+  id: string;
   roles: string[];
 }

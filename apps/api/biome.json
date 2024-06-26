@@ -29,7 +29,7 @@
       },
       "suspicious": {
         "noEmptyBlockStatements": "off",
-        "noExplicitAny": "off",
+        "noExplicitAny": "error",
         "noExtraNonNullAssertion": "error",
         "noMisleadingInstantiator": "error",
         "useNamespaceKeyword": "error"

@@ -14,6 +14,24 @@ export class BusinessService {
     private readonly businessContactRepository: EntityRepository<BusinessContact>,
   ) {}
 
+  getBusinessById(businessId: string): Promise<Business> {
+    return this.businessRepository.findOneOrFail(
+      {
+        where: { id: businessId },
+      },
+      { populate: ['contacts'] },
+    );
+  }
+
+  getBusinessByUserId(userId: string): Promise<Business> {
+    return this.businessRepository.findOneOrFail(
+      {
+        where: { user: userId },
+      },
+      { populate: ['contacts'] },
+    );
+  }
+
   async updateBusiness(
     businessId: string,
     updateBusinessDto: UpdateBusinessDto,
@@ -33,7 +51,7 @@ export class BusinessService {
 
   async setupBusiness(ownerId: string, setupBusinessDto: SetupBusinessDto) {
     return this.em.transactional(async (entityManager) => {
-      const business = await this.businessRepository.create({
+      const business = this.businessRepository.create({
         ...setupBusinessDto.business,
         owner: ownerId,
       });
@@ -42,12 +60,12 @@ export class BusinessService {
 
       const contactsOperations = setupBusinessDto.contacts.map(
         async (contact) => {
-          const newContact = await this.businessContactRepository.create({
+          const newContact = this.businessContactRepository.create({
             ...contact,
             business,
           });
 
-          entityManager.persistAndFlush(newContact);
+          await entityManager.persistAndFlush(newContact);
 
           return newContact;
         },

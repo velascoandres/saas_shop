@@ -7,6 +7,7 @@ import { Entity, Index, OneToOne, Property, Unique } from '@mikro-orm/core';
 export class User extends BaseUUIEntity {
   @Property({ hidden: true })
   firstName!: string;
+
   @Property({ hidden: true })
   lastName!: string;
 
@@ -17,11 +18,6 @@ export class User extends BaseUUIEntity {
   @Index()
   isActive = true;
 
-  @OneToOne({ nullable: true })
+  @OneToOne(() => Business, { nullable: true })
   business?: Business;
-
-  @Property({ name: 'fullName' })
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
-  }
 }

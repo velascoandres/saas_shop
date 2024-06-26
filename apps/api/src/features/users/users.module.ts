@@ -6,7 +6,7 @@ import { User } from './entities/user.entity';
 import { UsersService } from './services/users.service';
 
 @Module({
-  imports: [MikroOrmModule.forFeature([User, UserRole, Role])],
+  imports: [MikroOrmModule.forFeature({ entities: [User, UserRole, Role] })],
   providers: [UsersService],
   exports: [UsersService],
 })

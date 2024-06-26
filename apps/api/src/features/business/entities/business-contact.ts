@@ -11,6 +11,6 @@ export class BusinessContact extends BaseEntity {
   @Property()
   value!: string;
 
-  @ManyToOne()
+  @ManyToOne(() => Business)
   business!: Business;
 }

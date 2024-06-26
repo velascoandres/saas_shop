@@ -1,3 +1,4 @@
+import { ZodFilter } from '@/shared/filters/zod.filters';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
@@ -13,6 +14,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const configService = app.get(ConfigService);
+
+  app.useGlobalFilters(new ZodFilter());
 
   await app.listen(configService.get('PORT') || DEFAULT_PORT);
 }

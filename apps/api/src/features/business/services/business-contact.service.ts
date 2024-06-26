@@ -1,6 +1,6 @@
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { EntityManager, EntityRepository, wrap } from '@mikro-orm/postgresql';
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateContactDto, UpdateContactDto } from '@repo/validation-schemas';
 import { BusinessContact } from '../entities';
 
@@ -16,7 +16,7 @@ export class BusinessContactService {
     businessId: string,
     createContactDto: CreateContactDto,
   ): Promise<BusinessContact> {
-    const contact = await this.businessContactRepository.create({
+    const contact = this.businessContactRepository.create({
       ...createContactDto,
       business: businessId,
     });
@@ -26,13 +26,20 @@ export class BusinessContactService {
     return contact;
   }
 
-  async updateContact(
+  async updateBusinessContact(
     contactId: number,
+    businessId: string,
     updateContactDto: UpdateContactDto,
   ): Promise<BusinessContact> {
     const contact = await this.businessContactRepository.findOneOrFail({
       id: contactId,
     });
+
+    const isRelatedToContact = contact.business.id === businessId;
+
+    if (!isRelatedToContact) {
+      throw new UnauthorizedException('Contact not related to business');
+    }
 
     wrap(contact).assign({
       ...updateContactDto,
