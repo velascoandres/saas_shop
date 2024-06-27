@@ -24,14 +24,14 @@ export class AuthService {
       providerId: sub,
     };
 
+    const [firstName, lastName] = profile.fullName.trim().split(' ');
     const user = await this.userService.findUserByEmail(profile.email);
-    const [firstname, lastname] = profile.fullName.trim().split(' ');
 
     if (!user) {
       const newUser = await this.userService.createUser({
         email: profile.email,
-        firstname,
-        lastname,
+        firstName,
+        lastName,
         picture: profile.picture,
       });
 

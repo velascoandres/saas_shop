@@ -1,10 +1,10 @@
 import { Property, t } from '@mikro-orm/core';
 import { PrimaryKey } from '@mikro-orm/postgresql';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export abstract class BaseUUIEntity {
   @PrimaryKey({ type: t.uuid })
-  id = uuid.v4();
+  id = uuidv4();
 
   @Property()
   createdAt = new Date();

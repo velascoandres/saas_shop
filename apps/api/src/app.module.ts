@@ -1,3 +1,4 @@
+import { AppController } from '@/app.controller';
 import { AuthModule } from '@/auth/auth.module';
 import { BusinessModule } from '@/business/business.module';
 import { UsersModule } from '@/users/users.module';
@@ -15,7 +16,7 @@ import { AppService } from './app.service';
     AuthModule,
   ],
   providers: [AppService],
-  controllers: [],
+  controllers: [AppController],
   exports: [],
 })
 export class AppModule {}

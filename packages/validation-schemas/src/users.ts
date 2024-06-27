@@ -3,8 +3,8 @@ import { z } from 'zod';
 export const createUserSchema = z
 	.object({
 		email: z.string().email(),
-		firstname: z.string(),
-		lastname: z.string(),
+		firstName: z.string(),
+		lastName: z.string(),
 		picture: z.string().optional(),
 	})
 	.required();

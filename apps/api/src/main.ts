@@ -17,6 +17,8 @@ async function bootstrap() {
 
   app.useGlobalFilters(new ZodFilter());
 
+  console.log(configService.get('PORT'));
+
   await app.listen(configService.get('PORT') || DEFAULT_PORT);
 }
 bootstrap();
