@@ -12,6 +12,6 @@
       "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescriptreact]": {
-      "editor.defaultFormatter": null
+      "editor.defaultFormatter": "biomejs.biome"
   }
 }

@@ -1,40 +1,40 @@
-import findUserProfile from '@/auth/api/find-user-roles.service.ts';
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import { ROLES } from '@repo/shared-const-types';
-import { NextResponse } from 'next/server';
+import findUserProfile from '@/auth/services/find-user-roles.service'
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { ROLES } from '@repo/shared-const-types'
+import { NextResponse } from 'next/server'
 
-const isPublicRoute = createRouteMatcher(['/auth/sign-up(.*)']);
+const isPublicRoute = createRouteMatcher(['/auth/sign-up(.*)', '/'])
 
 export default clerkMiddleware(async (auth, request) => {
 	if (isPublicRoute(request)) {
-		return;
+		return
 	}
 
-	const token = await auth().getToken();
+	const token = await auth().getToken()
 
 	if (!token) {
-		auth().redirectToSignIn();
+		auth().redirectToSignIn()
 
-		return;
+		return
 	}
 
-	const userProfile = await findUserProfile(token);
+	const userProfile = await findUserProfile(token)
 
 	if (userProfile?.roles?.includes(ROLES.SHOP_OWNER)) {
-		auth().protect();
+		auth().protect()
 
-		return;
+		return
 	}
 
-	const setupUrlPath = '/business/setup';
+	const setupUrlPath = '/business/setup'
 
 	if (request.url.includes(setupUrlPath)) {
-		return;
+		return
 	}
 
-	return NextResponse.redirect(new URL(setupUrlPath, request.url));
-});
+	return NextResponse.redirect(new URL(setupUrlPath, request.url))
+})
 
 export const config = {
 	matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
-};
+}

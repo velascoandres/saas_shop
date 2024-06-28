@@ -18,20 +18,20 @@ export class AuthService {
 
     const profile: OAuthProfile = {
       email: userData.email,
-      fullName: userData.fullName,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
       picture: userData.pictureUrl,
       provider: 'oauth',
       providerId: sub,
     };
 
-    const [firstName, lastName] = profile.fullName.trim().split(' ');
     const user = await this.userService.findUserByEmail(profile.email);
 
     if (!user) {
       const newUser = await this.userService.createUser({
         email: profile.email,
-        firstName,
-        lastName,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
         picture: profile.picture,
       });
 

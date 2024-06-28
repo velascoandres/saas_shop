@@ -1,3 +1,3 @@
 export default function Page() {
-	return <>Setup business setup</>;
+	return <>Setup business setup</>
 }

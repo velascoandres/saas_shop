@@ -1,6 +1,7 @@
 export interface OAuthProfile {
   picture: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   provider: string;
   providerId: string;
   email: string;

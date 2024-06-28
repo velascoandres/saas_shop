@@ -5,7 +5,14 @@
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "single"
+			"quoteStyle": "single",
+			"quoteProperties": "asNeeded",
+			"trailingComma": "all",
+			"semicolons": "asNeeded",
+			"arrowParentheses": "always",
+			"bracketSpacing": true,
+			"bracketSameLine": false,
+			"attributePosition": "auto"
 		}
 	},
 	"linter": {
@@ -28,6 +35,9 @@
 				}
 			},
 			"javascript": {
+				"formatter": {
+					"semicolons": "always"
+				},
 				"parser": {
 					"unsafeParameterDecoratorsEnabled": true
 				}

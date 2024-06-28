@@ -1,17 +1,11 @@
-import sharedConfig from '@repo/tailwind-config';
-import type { Config } from 'tailwindcss';
-import tailwindcssAnimate from 'tailwindcss-animate';
+import sharedConfig from '@repo/tailwind-config'
+import type { Config } from 'tailwindcss'
+import tailwindcssAnimate from 'tailwindcss-animate'
 
 const config = {
 	darkMode: ['class'],
 	presets: [sharedConfig],
-	content: [
-		'./pages/**/*.{ts,tsx}',
-		'./components/**/*.{ts,tsx}',
-		'./app/**/*.{ts,tsx}',
-		'./src/**/*.{ts,tsx}',
-		'../../packages/ui/src/**/*.{ts,tsx}',
-	],
+	content: ['./src/components/**/*.{ts,tsx}'],
 	prefix: '',
 	theme: {
 		container: {
@@ -79,6 +73,6 @@ const config = {
 		},
 	},
 	plugins: [tailwindcssAnimate],
-} satisfies Config;
+} satisfies Config
 
-export default config;
+export default config

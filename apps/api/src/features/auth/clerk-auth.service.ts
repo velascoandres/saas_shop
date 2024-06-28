@@ -5,7 +5,8 @@ import { ConfigService } from '@nestjs/config';
 interface UserInfo {
   email: string;
   pictureUrl: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
 }
 
 @Injectable()
@@ -23,7 +24,8 @@ export class ClerkAuthService {
 
     return {
       user: {
-        fullName: `${user.firstName} ${user.lastName}`,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.emailAddresses[0].emailAddress,
         pictureUrl: user.imageUrl,
       },
